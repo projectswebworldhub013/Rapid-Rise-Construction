@@ -18,14 +18,14 @@ export default function AboutSection() {
 
       {/* ===== GRID BACKGROUND ===== */}
       <svg
-        className="absolute inset-0 w-full h-full opacity-[0.06]"
+        className="absolute inset-0 w-full h-full opacity-[0.5]"
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
           <pattern
             id="grid"
-            width="60"
-            height="60"
+            width="40"
+            height="40"
             patternUnits="userSpaceOnUse"
           >
             <path
@@ -38,9 +38,6 @@ export default function AboutSection() {
         </defs>
         <rect width="100%" height="100%" fill="url(#grid)" />
       </svg>
-
-      {/* GOLD GLOW */}
-      <div className="absolute top-[-140px] right-[-140px] w-[420px] h-[420px] bg-[#D4AF37]/10 rounded-full blur-3xl"></div>
 
       <motion.div
         className="relative max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center"
@@ -121,8 +118,8 @@ export default function AboutSection() {
               className="
                 px-10 py-3 rounded-full text-sm md:text-base font-medium
                 text-black bg-[#D4AF37]
-                hover:bg-[#F5C842]
-                shadow-lg hover:shadow-[0_12px_32px_rgba(212,175,55,0.35)]
+                hover:bg-[#ffffff]
+                
                 transition-all duration-300
               "
             >

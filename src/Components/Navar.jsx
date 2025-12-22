@@ -34,13 +34,17 @@ export default function Navbar() {
   ];
 
   const services = [
-    "Residential Construction",
-    "Commercial Construction",
-    "Interior Designing",
-    "Renovation & Remodeling",
-    "Architectural & 3D Design",
-    "Turnkey Construction Solutions",
-  ];
+  "Residential Construction",
+  "Commercial Construction",
+  "Interior Designing",
+  "Renovation & Remodeling",
+  "Architectural & 3D Design",
+  "Turnkey Construction Solutions",
+  "Structural Engineering & Supervision",
+  "Project Management & Consultancy",
+  "Sustainable & Green Building Solutions",
+];
+
 
   const projects = [
     "Luxury Mansions",
@@ -111,12 +115,12 @@ export default function Navbar() {
               <button className="flex items-center gap-2 hover:text-[#D4AF37]">
                 <FaTools /> Services <FaChevronDown className="text-xs" />
               </button>
-              <ul className="absolute left-0 mt-4 w-72 bg-[#141414] text-[#CFCFCF] border border-[#2A2A2A] rounded-xl shadow-xl opacity-0 invisible group-hover:visible group-hover:opacity-100 transition">
+              <ul className="absolute left-0 mt-1 w-72 bg-[#141414] text-[#CFCFCF] border border-[#2A2A2A] rounded-xl shadow-xl opacity-0 invisible group-hover:visible group-hover:opacity-100 hover:rounded-xl transition">
                 {services.map((item, i) => (
                   <li key={i}>
                     <Link
                       to="/services"
-                      className="block px-5 py-3 text-sm hover:bg-[#1A1A1A]"
+                      className="block px-5 py-3 text-sm hover:bg-[#1A1A1A] hover:rounded-xl"
                     >
                       {item}
                     </Link>
@@ -130,12 +134,12 @@ export default function Navbar() {
               <button className="flex items-center gap-2 hover:text-[#D4AF37]">
                 <FaProjectDiagram /> Our Projects <FaChevronDown className="text-xs" />
               </button>
-              <ul className="absolute left-0 mt-4 w-72 bg-[#141414] text-[#CFCFCF] border border-[#2A2A2A] rounded-xl shadow-xl opacity-0 invisible group-hover:visible group-hover:opacity-100 transition">
+              <ul className="absolute left-0 mt-1 w-72 bg-[#141414] text-[#CFCFCF] border border-[#2A2A2A] rounded-xl shadow-xl opacity-0 invisible group-hover:visible group-hover:opacity-100 hover:rounded-xl transition">
                 {projects.map((item, i) => (
                   <li key={i}>
                     <Link
                       to="/projects"
-                      className="block px-5 py-3 text-sm hover:bg-[#1A1A1A]"
+                      className="block px-5 py-3 text-sm hover:bg-[#1A1A1A] hover:rounded-xl"
                     >
                       {item}
                     </Link>
