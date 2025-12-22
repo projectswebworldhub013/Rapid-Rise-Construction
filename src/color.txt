@@ -1,0 +1,14 @@
+| Usage Purpose            | Color Name              | Hex Code  | Description                                  |
+| ------------------------ | ----------------------- | --------- | -------------------------------------------- |
+| **Primary Background**   | Industrial Black        | `#0F0F0F` | Strong foundation, premium construction feel |
+| **Secondary Background** | Dark Steel Grey         | `#1A1A1A` | Sections, cards, footer                      |
+| **Primary Accent**       | Royal Construction Gold | `#D4AF37` | Buttons, highlights, brand emphasis          |
+| **Secondary Accent**     | Matte Gold              | `#B8962E` | Hover states, icons, borders                 |
+| **Highlight / Glow**     | Golden Glow             | `#F5C842` | CTA hover, focus rings                       |
+| **Primary Text**         | Pure White              | `#FFFFFF` | Headings & main content                      |
+| **Secondary Text**       | Light Concrete Grey     | `#CFCFCF` | Paragraph text                               |
+| **Muted Text**           | Ash Grey                | `#9A9A9A` | Labels, helper text                          |
+| **Card Background**      | Concrete Black          | `#141414` | Service cards & modals                       |
+| **Borders / Dividers**   | Steel Line Grey         | `#2A2A2A` | Separators & outlines                        |
+| **Success / Quality**    | Structural Green        | `#16A34A` | Completed work indicators                    |
+| **Warning / Safety**     | Safety Orange           | `#F97316` | Alerts & safety notices                      |
