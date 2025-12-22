@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaArrowRight, FaHardHat, FaBuilding, FaCogs } from "react-icons/fa";
+import {
+  FaArrowRight,
+  FaHardHat,
+  FaBuilding,
+  FaCogs,
+  FaTools,
+  FaCheckCircle,
+} from "react-icons/fa";
 
 import hero1 from "../assets/images/hero/h1.jpg";
 import hero2 from "../assets/images/hero/h3.jpg";
@@ -8,8 +15,58 @@ import hero3 from "../assets/images/hero/h4.avif";
 
 const slides = [hero1, hero2, hero3];
 
+/* 🔹 Right Panel Points */
+const featurePoints = [
+  {
+    icon: <FaHardHat />,
+    text: (
+      <>
+        Over <strong>20+ years of industry experience</strong> delivering
+        structurally strong, aesthetically refined, future-ready constructions.
+      </>
+    ),
+  },
+  {
+    icon: <FaBuilding />,
+    text: (
+      <>
+        Expertise in <strong>luxury homes, commercial buildings, hospitals,
+        offices & institutions</strong> with end-to-end supervision.
+      </>
+    ),
+  },
+  {
+    icon: <FaCogs />,
+    text: (
+      <>
+        Powered by <strong>modern construction technology</strong>, premium
+        materials and transparent costing.
+      </>
+    ),
+  },
+  {
+    icon: <FaTools />,
+    text: (
+      <>
+        Skilled engineers, architects & supervisors ensuring
+        <strong> flawless execution</strong> at every stage.
+      </>
+    ),
+  },
+  {
+    icon: <FaCheckCircle />,
+    text: (
+      <>
+        Commitment to <strong>on-time delivery</strong>, safety compliance and
+        long-term structural reliability.
+      </>
+    ),
+  },
+];
+
 export default function HeroSection() {
   const [index, setIndex] = useState(0);
+  const [featureIndex, setFeatureIndex] = useState(0);
 
   /* 🔁 Background Slider */
   useEffect(() => {
@@ -18,6 +75,20 @@ export default function HeroSection() {
     }, 5000);
     return () => clearInterval(interval);
   }, []);
+
+  /* 🔁 Right Text Vertical Slider */
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setFeatureIndex((prev) => (prev + 1) % featurePoints.length);
+    }, 3500);
+    return () => clearInterval(interval);
+  }, []);
+
+  const visiblePoints = [
+    featurePoints[featureIndex % featurePoints.length],
+    featurePoints[(featureIndex + 1) % featurePoints.length],
+    featurePoints[(featureIndex + 2) % featurePoints.length],
+  ];
 
   return (
     <section className="mt-28 relative w-full h-[85vh] overflow-hidden">
@@ -78,43 +149,39 @@ export default function HeroSection() {
             </div>
           </motion.div>
 
-          {/* RIGHT – MODERN TEXT PANEL */}
+          {/* RIGHT – FIXED PANEL WITH SLIDING CONTENT */}
           <motion.div
             initial={{ opacity: 0, x: 60 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1.2 }}
-            className="relative left-42  "
+            className="relative left-32"
           >
-            <div className=" p-8 space-y-6 w-112">
+            <div className="p-8 w-[28rem] overflow-hidden">
+              <AnimatePresence mode="popLayout">
+                <motion.div
+                  key={featureIndex}
+                  initial={{ y: 40, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: -40, opacity: 0 }}
+                  transition={{ duration: 0.9, ease: "easeInOut" }}
+                  className="space-y-6"
+                >
+                  {visiblePoints.map((item, i) => (
+                    <div key={i} className="flex items-start gap-4">
+                      <div className="text-[#D4AF37] text-2xl mt-1">
+                        {item.icon}
+                      </div>
+                      <p className="text-sm text-[#E5E5E5] leading-relaxed">
+                        {item.text}
+                      </p>
+                    </div>
+                  ))}
+                </motion.div>
+              </AnimatePresence>
 
-              <div className="flex items-start gap-4">
-                <FaHardHat className="text-[#D4AF37] text-2xl mt-1" />
-                <p className="text-sm text-[#E5E5E5] leading-relaxed">
-                  Over <strong>20+ years of industry experience</strong> delivering
-                  structurally strong, aesthetically refined and future-ready
-                  constructions.
-                </p>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <FaBuilding className="text-[#D4AF37] text-2xl mt-1" />
-                <p className="text-sm text-[#E5E5E5] leading-relaxed">
-                  Expertise across <strong>luxury homes, commercial buildings,
-                  offices, hospitals and institutions</strong> with complete
-                  project supervision.
-                </p>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <FaCogs className="text-[#D4AF37] text-2xl mt-1" />
-                <p className="text-sm text-[#E5E5E5] leading-relaxed">
-                  Powered by <strong>modern construction technology</strong>,
-                  premium materials, transparent costing and on-time delivery.
-                </p>
-              </div>
-
-              <div className="pt-4 border-t border-white/10 text-sm text-[#CFCFCF]">
-                Trusted by <span className="text-[#D4AF37] font-semibold">500+</span>{" "}
+              <div className="pt-6 mt-6 border-t border-white/10 text-sm text-[#CFCFCF]">
+                Trusted by{" "}
+                <span className="text-[#D4AF37] font-semibold">500+</span>{" "}
                 satisfied clients across Uttar Pradesh.
               </div>
             </div>
@@ -122,8 +189,6 @@ export default function HeroSection() {
 
         </div>
       </div>
-
-
     </section>
   );
 }
