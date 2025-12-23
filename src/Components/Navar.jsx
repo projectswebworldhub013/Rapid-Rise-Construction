@@ -15,6 +15,12 @@ import {
   FaLinkedinIn,
   FaYoutube,
   FaPinterestP,
+  FaBuilding,
+  FaCity,
+  FaWarehouse,
+  
+  FaCouch,
+  FaRedo,
 } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 
@@ -73,14 +79,16 @@ export default function Navbar() {
     },
   ];
 
-  const projects = [
-    "Luxury Mansions",
-    "Residential Homes",
-    "Commercial Buildings",
-    "Office & Showrooms",
-    "Interior Projects",
-    "Renovation Projects",
-  ];
+  // Projects with routes and icons
+ const projects = [
+  { name: "Luxury Mansions", path: "/projects/luxury-mansions", icon: <FaBuilding /> },
+  { name: "Residential Homes", path: "/projects/residential-homes", icon: <FaHome /> },
+  { name: "Commercial Buildings", path: "/projects/commercial-buildings", icon: <FaCity /> },
+  { name: "Office & Showrooms", path: "/projects/offices-showrooms", icon: <FaWarehouse /> },
+  { name: "Interior Projects", path: "/projects/interior-projects", icon: <FaCouch /> },
+  { name: "Renovation Projects", path: "/projects/renovation-projects", icon: <FaRedo /> },
+];
+
 
   /* ---------------- SCROLL EFFECT ---------------- */
 
@@ -161,14 +169,14 @@ export default function Navbar() {
                 <FaProjectDiagram /> Our Projects{" "}
                 <FaChevronDown className="text-xs" />
               </button>
-              <ul className="absolute left-0 mt-1 w-72 bg-[#141414] text-[#CFCFCF] border border-[#2A2A2A] rounded-xl shadow-xl opacity-0 invisible group-hover:visible group-hover:opacity-100 transition">
+              <ul className="absolute left-0 mt-1 w-80 bg-[#141414] text-[#CFCFCF] border border-[#2A2A2A] rounded-xl shadow-xl opacity-0 invisible group-hover:visible group-hover:opacity-100 transition">
                 {projects.map((item, i) => (
                   <li key={i}>
                     <Link
-                      to="/projects"
-                      className="block px-5 py-3 text-sm hover:bg-[#1A1A1A] hover:rounded-xl"
+                      to={item.path}
+                      className="flex items-center gap-2 px-5 py-3 text-sm hover:bg-[#1A1A1A] hover:rounded-xl"
                     >
-                      {item}
+                      {item.icon} {item.name}
                     </Link>
                   </li>
                 ))}
@@ -189,12 +197,53 @@ export default function Navbar() {
 
           {/* Social Icons */}
           <div className="hidden md:flex gap-5 text-lg text-[#1A1A1A]">
-            <a href="https://www.facebook.com/Rapidriseconstruction/" target="_blank" rel="noreferrer" className="text-[#1877F2]"><FaFacebookF /></a>
-            <a href="https://www.instagram.com/rapidriseconstructions/" target="_blank" rel="noreferrer" className="text-[#E1306C]"><FaInstagram /></a>
-            <a href="https://x.com/Rapidriseconst" target="_blank" rel="noreferrer"><FaXTwitter /></a>
-            <a href="https://www.linkedin.com/in/rapidriseconstruction/" target="_blank" rel="noreferrer" className="text-[#0A66C2]"><FaLinkedinIn /></a>
-            <a href="https://www.pinterest.com/rapidriseconstruction/" target="_blank" rel="noreferrer" className="text-[#E60023]"><FaPinterestP /></a>
-            <a href="https://www.youtube.com/@rapidriseconstructions" target="_blank" rel="noreferrer" className="text-[#FF0000]"><FaYoutube /></a>
+            <a
+              href="https://www.facebook.com/Rapidriseconstruction/"
+              target="_blank"
+              rel="noreferrer"
+              className="text-[#1877F2]"
+            >
+              <FaFacebookF />
+            </a>
+            <a
+              href="https://www.instagram.com/rapidriseconstructions/"
+              target="_blank"
+              rel="noreferrer"
+              className="text-[#E1306C]"
+            >
+              <FaInstagram />
+            </a>
+            <a
+              href="https://x.com/Rapidriseconst"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FaXTwitter />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/rapidriseconstruction/"
+              target="_blank"
+              rel="noreferrer"
+              className="text-[#0A66C2]"
+            >
+              <FaLinkedinIn />
+            </a>
+            <a
+              href="https://www.pinterest.com/rapidriseconstruction/"
+              target="_blank"
+              rel="noreferrer"
+              className="text-[#E60023]"
+            >
+              <FaPinterestP />
+            </a>
+            <a
+              href="https://www.youtube.com/@rapidriseconstructions"
+              target="_blank"
+              rel="noreferrer"
+              className="text-[#FF0000]"
+            >
+              <FaYoutube />
+            </a>
           </div>
 
           {/* Mobile Button */}
@@ -229,6 +278,34 @@ export default function Navbar() {
               {link.name}
             </Link>
           ))}
+
+          <div className="mt-4">
+            <p className="text-[#D4AF37] mb-2 font-semibold">Services</p>
+            {services.map((service, i) => (
+              <Link
+                key={i}
+                to={service.path}
+                onClick={() => setMenuOpen(false)}
+                className="block py-2 text-sm hover:text-[#F5C842]"
+              >
+                {service.name}
+              </Link>
+            ))}
+          </div>
+
+          <div className="mt-4">
+            <p className="text-[#D4AF37] mb-2 font-semibold">Projects</p>
+            {projects.map((item, i) => (
+              <Link
+                key={i}
+                to={item.path}
+                onClick={() => setMenuOpen(false)}
+                className="block py-2 text-sm flex items-center gap-2 hover:text-[#F5C842]"
+              >
+                {item.icon} {item.name}
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
 
