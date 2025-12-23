@@ -4,6 +4,7 @@ import Home from './Pages/Home'
 import Navbar from './Components/Navar'
 import Footer from './Components/Footer'
 import About from './Pages/About'
+import ServiceDetail from './Pages/ServiceDetail'
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/about' element={<About/>}/>
+        <Route path="/services/:id" element={<ServiceDetail />} />
       </Routes>
       <Footer/>
     </div>

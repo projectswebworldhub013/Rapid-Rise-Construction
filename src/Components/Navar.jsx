@@ -33,18 +33,45 @@ export default function Navbar() {
     { name: "Contact Us", path: "/contact", icon: <FaPhoneAlt /> },
   ];
 
+  // ✅ UPDATED SERVICES WITH PATHS
   const services = [
-  "Residential Construction",
-  "Commercial Construction",
-  "Interior Designing",
-  "Renovation & Remodeling",
-  "Architectural & 3D Design",
-  "Turnkey Construction Solutions",
-  "Structural Engineering & Supervision",
-  "Project Management & Consultancy",
-  "Sustainable & Green Building Solutions",
-];
-
+    {
+      name: "Residential Construction",
+      path: "/services/residential-construction",
+    },
+    {
+      name: "Commercial Construction",
+      path: "/services/commercial-construction",
+    },
+    {
+      name: "Interior Designing",
+      path: "/services/interior-designing",
+    },
+    {
+      name: "Renovation & Remodeling",
+      path: "/services/renovation-remodeling",
+    },
+    {
+      name: "Architectural & 3D Design",
+      path: "/services/architectural-3d-design",
+    },
+    {
+      name: "Turnkey Construction Solutions",
+      path: "/services/turnkey-construction-solutions",
+    },
+    {
+      name: "Structural Engineering & Supervision",
+      path: "/services/structural-engineering-supervision",
+    },
+    {
+      name: "Project Management & Consultancy",
+      path: "/services/project-management-consultancy",
+    },
+    {
+      name: "Sustainable & Green Building Solutions",
+      path: "/services/sustainable-green-building-solutions",
+    },
+  ];
 
   const projects = [
     "Luxury Mansions",
@@ -88,13 +115,12 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* 🔶 Main Navbar (LIGHT) */}
+      {/* 🔶 Main Navbar */}
       <nav className="bg-[#FFFFFF] border-b border-[#E5E7EB] shadow-sm">
         <div className="max-w-[1400px] mx-auto flex items-center justify-between px-5 py-3">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
             <img src={logo} alt="Rapid Rise Construction" className="h-14" />
-            
           </Link>
 
           {/* Desktop Menu */}
@@ -110,19 +136,19 @@ export default function Navbar() {
               </li>
             ))}
 
-            {/* Services */}
+            {/* Services Dropdown */}
             <li className="relative group">
               <button className="flex items-center gap-2 hover:text-[#D4AF37]">
                 <FaTools /> Services <FaChevronDown className="text-xs" />
               </button>
-              <ul className="absolute left-0 mt-1 w-72 bg-[#141414] text-[#CFCFCF] border border-[#2A2A2A] rounded-xl shadow-xl opacity-0 invisible group-hover:visible group-hover:opacity-100 hover:rounded-xl transition">
-                {services.map((item, i) => (
+              <ul className="absolute left-0 mt-1 w-72 bg-[#141414] text-[#CFCFCF] border border-[#2A2A2A] rounded-xl shadow-xl opacity-0 invisible group-hover:visible group-hover:opacity-100 transition">
+                {services.map((service, i) => (
                   <li key={i}>
                     <Link
-                      to="/services"
+                      to={service.path}
                       className="block px-5 py-3 text-sm hover:bg-[#1A1A1A] hover:rounded-xl"
                     >
-                      {item}
+                      {service.name}
                     </Link>
                   </li>
                 ))}
@@ -132,9 +158,10 @@ export default function Navbar() {
             {/* Projects */}
             <li className="relative group">
               <button className="flex items-center gap-2 hover:text-[#D4AF37]">
-                <FaProjectDiagram /> Our Projects <FaChevronDown className="text-xs" />
+                <FaProjectDiagram /> Our Projects{" "}
+                <FaChevronDown className="text-xs" />
               </button>
-              <ul className="absolute left-0 mt-1 w-72 bg-[#141414] text-[#CFCFCF] border border-[#2A2A2A] rounded-xl shadow-xl opacity-0 invisible group-hover:visible group-hover:opacity-100 hover:rounded-xl transition">
+              <ul className="absolute left-0 mt-1 w-72 bg-[#141414] text-[#CFCFCF] border border-[#2A2A2A] rounded-xl shadow-xl opacity-0 invisible group-hover:visible group-hover:opacity-100 transition">
                 {projects.map((item, i) => (
                   <li key={i}>
                     <Link
@@ -171,7 +198,10 @@ export default function Navbar() {
           </div>
 
           {/* Mobile Button */}
-          <button className="md:hidden text-[#1A1A1A]" onClick={() => setMenuOpen(true)}>
+          <button
+            className="md:hidden text-[#1A1A1A]"
+            onClick={() => setMenuOpen(true)}
+          >
             <FaBars size={26} />
           </button>
         </div>
