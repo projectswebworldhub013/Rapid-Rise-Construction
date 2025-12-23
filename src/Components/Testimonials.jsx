@@ -23,32 +23,38 @@ const testimonials = [
   {
     name: "Arjun Mehta",
     rating: 5,
-    text: "Rapid Rise Construction delivered our residential project with exceptional quality and on-time completion. The workmanship truly exceeded expectations.",
+    text:
+      "Rapid Rise Construction delivered our residential project with exceptional quality and on-time completion. The workmanship truly exceeded expectations.",
   },
   {
     name: "Kavita Sharma",
     rating: 4.5,
-    text: "From planning to execution, everything was handled professionally. Transparent communication and excellent finishing work.",
+    text:
+      "From planning to execution, everything was handled professionally. Transparent communication and excellent finishing work.",
   },
   {
     name: "Rohit Malhotra",
     rating: 5,
-    text: "Their structural expertise and site supervision gave us complete confidence. A highly reliable construction company.",
+    text:
+      "Their structural expertise and site supervision gave us complete confidence. A highly reliable construction company.",
   },
   {
     name: "Neha Verma",
     rating: 4.5,
-    text: "Rapid Rise transformed our commercial space beautifully. Premium materials, skilled team, and flawless execution.",
+    text:
+      "Rapid Rise transformed our commercial space beautifully. Premium materials, skilled team, and flawless execution.",
   },
   {
     name: "Sanjay Khanna",
     rating: 4,
-    text: "Very disciplined project management and strong attention to detail. The project was completed within budget.",
+    text:
+      "Very disciplined project management and strong attention to detail. The project was completed within budget.",
   },
   {
     name: "Pooja Agarwal",
     rating: 5,
-    text: "Outstanding experience from start to finish. Their design suggestions and build quality were top-class.",
+    text:
+      "Outstanding experience from start to finish. Their design suggestions and build quality were top-class.",
   },
 ];
 
@@ -59,19 +65,19 @@ const testimonials = [
 const renderStars = (rating) => {
   const stars = [];
   for (let i = 1; i <= 5; i++) {
-    if (rating >= i) {
-      stars.push(<FaStar key={i} />);
-    } else if (rating >= i - 0.5) {
-      stars.push(<FaStarHalfAlt key={i} />);
-    } else {
-      stars.push(<FaRegStar key={i} />);
-    }
+    if (rating >= i) stars.push(<FaStar key={i} />);
+    else if (rating >= i - 0.5) stars.push(<FaStarHalfAlt key={i} />);
+    else stars.push(<FaRegStar key={i} />);
   }
   return stars;
 };
 
 export default function Testimonials() {
   const sliderRef = useRef(null);
+
+  /* ===========================
+     Slick Settings (FIXED)
+  =========================== */
 
   const settings = {
     dots: true,
@@ -80,30 +86,31 @@ export default function Testimonials() {
     speed: 700,
     autoplay: true,
     autoplaySpeed: 4500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
     pauseOnHover: true,
     cssEase: "ease-in-out",
-    adaptiveHeight: false, // 🔥 IMPORTANT FIX
+
+    mobileFirst: true,      // 🔥 CRITICAL FIX
+    slidesToShow: 1,        // ✅ Mobile default
+    slidesToScroll: 1,
+    adaptiveHeight: false,
+
     responsive: [
       {
-        breakpoint: 1280,
+        breakpoint: 768,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 1,
         },
       },
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 2,
         },
       },
       {
-        breakpoint: 768,
+        breakpoint: 1280,
         settings: {
-          slidesToShow: 1,
-          centerMode: true,
-          centerPadding: "0px", // 🔥 PREVENT CUT-OFF
+          slidesToShow: 3,
         },
       },
     ],
@@ -112,6 +119,7 @@ export default function Testimonials() {
   return (
     <section className="bg-[#0F0F0F] py-14 sm:py-20 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
+
         {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 25 }}
@@ -132,7 +140,8 @@ export default function Testimonials() {
         </motion.div>
 
         {/* Slider */}
-        <div className="relative">
+        <div className="relative overflow-hidden">
+
           {/* Desktop Arrows */}
           <button
             onClick={() => sliderRef.current.slickPrev()}
@@ -158,7 +167,7 @@ export default function Testimonials() {
 
           <Slider ref={sliderRef} {...settings}>
             {testimonials.map((item, i) => (
-              <div key={i} className="px-2 sm:px-3 md:px-4">
+              <div key={i} className="px-0 sm:px-3 md:px-4">
                 <motion.div
                   whileHover={{ y: -6 }}
                   transition={{ duration: 0.3 }}
@@ -181,17 +190,17 @@ export default function Testimonials() {
 
                   {/* User */}
                   <div className="flex items-center gap-3 mt-auto">
-                    <div
-                      className="w-10 h-10 rounded-full bg-[#1A1A1A] 
-                    text-[#D4AF37] flex items-center justify-center text-lg"
-                    >
+                    <div className="w-10 h-10 rounded-full bg-[#1A1A1A] 
+                    text-[#D4AF37] flex items-center justify-center text-lg">
                       <FaUserCircle />
                     </div>
                     <div>
                       <h4 className="text-sm font-semibold text-white">
                         {item.name}
                       </h4>
-                      <p className="text-xs text-[#9A9A9A]">Verified Client</p>
+                      <p className="text-xs text-[#9A9A9A]">
+                        Verified Client
+                      </p>
                     </div>
                   </div>
                 </motion.div>
@@ -212,6 +221,7 @@ export default function Testimonials() {
             </button>
           </Link>
         </div>
+
       </div>
     </section>
   );
