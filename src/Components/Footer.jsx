@@ -31,16 +31,43 @@ const containerVariants = {
 };
 
 /* ================= SERVICES ================= */
-const servicesData = [
-  "Residential Construction",
-  "Commercial Construction",
-  "Interior Designing",
-  "Renovation & Remodeling",
-  "Architectural & 3D Design",
-  "Turnkey Construction Solutions",
-  "Structural Engineering & Supervision",
-  "Project Management & Consultancy",
-  "Sustainable & Green Building Solutions",
+const services = [
+  {
+    name: "Residential Construction",
+    path: "/services/residential-construction",
+  },
+  {
+    name: "Commercial Construction",
+    path: "/services/commercial-construction",
+  },
+  {
+    name: "Interior Designing",
+    path: "/services/interior-designing",
+  },
+  {
+    name: "Renovation & Remodeling",
+    path: "/services/renovation-remodeling",
+  },
+  {
+    name: "Architectural & 3D Design",
+    path: "/services/architectural-3d-design",
+  },
+  {
+    name: "Turnkey Construction Solutions",
+    path: "/services/turnkey-construction-solutions",
+  },
+  {
+    name: "Structural Engineering & Supervision",
+    path: "/services/structural-engineering-supervision",
+  },
+  {
+    name: "Project Management & Consultancy",
+    path: "/services/project-management-consultancy",
+  },
+  {
+    name: "Sustainable & Green Building Solutions",
+    path: "/services/sustainable-green-building-solutions",
+  },
 ];
 
 export default function Footer() {
@@ -164,18 +191,24 @@ export default function Footer() {
 
         {/* SERVICES */}
         <div>
-          <h4 className="text-2xl font-bold text-white mb-4 font-[italiana]">
-            Our Services
-          </h4>
-          <ul className="space-y-2">
-            {servicesData.map((service, i) => (
-              <li key={i} className="hover:text-[#D4AF37] transition">
-                <FaArrowRight className="inline mr-2 text-[#B8962E]" />
-                {service}
-              </li>
-            ))}
-          </ul>
-        </div>
+  <h4 className="text-2xl font-bold text-white mb-4 font-[italiana]">
+    Our Services
+  </h4>
+
+  <ul className="space-y-2">
+    {services.map((service, i) => (
+      <li key={i}>
+        <Link
+          to={service.path}
+          className="group flex items-center text-[#E5E5E5] hover:text-[#D4AF37] transition"
+        >
+          <FaArrowRight className="mr-2 text-[#B8962E] group-hover:translate-x-1 transition-transform" />
+          {service.name}
+        </Link>
+      </li>
+    ))}
+  </ul>
+</div>
 
         {/* ADDRESS & CONTACT */}
         <div>

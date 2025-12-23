@@ -3,3 +3,14 @@
 html{
   scroll-behavior: smooth;
 }
+
+@keyframes modalPop {
+  from {
+    transform: scale(0.92);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

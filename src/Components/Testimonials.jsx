@@ -16,7 +16,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { Link } from "react-router-dom";
 
 /* ===========================
-   Rapid Rise Construction Testimonials
+   Testimonials Data
 =========================== */
 
 const testimonials = [
@@ -89,28 +89,32 @@ export default function Testimonials() {
     pauseOnHover: true,
     cssEase: "ease-in-out",
 
-    mobileFirst: true,      // 🔥 CRITICAL FIX
-    slidesToShow: 1,        // ✅ Mobile default
+    slidesToShow: 3,          // ✅ DESKTOP DEFAULT
     slidesToScroll: 1,
-    adaptiveHeight: false,
 
     responsive: [
       {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1,
-        },
-      },
-      {
-        breakpoint: 1024,
+        breakpoint: 1280,     // ⬇️ below XL
         settings: {
           slidesToShow: 2,
         },
       },
       {
-        breakpoint: 1280,
+        breakpoint: 1024,     // ⬇️ below LG
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 768,      // ⬇️ TABLET
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+      {
+        breakpoint: 640,      // ⬇️ MOBILE
+        settings: {
+          slidesToShow: 1,
         },
       },
     ],
@@ -140,11 +144,11 @@ export default function Testimonials() {
         </motion.div>
 
         {/* Slider */}
-        <div className="relative overflow-hidden">
+        <div className="relative">
 
           {/* Desktop Arrows */}
           <button
-            onClick={() => sliderRef.current.slickPrev()}
+            onClick={() => sliderRef.current?.slickPrev()}
             className="hidden lg:flex absolute -left-6 top-1/2 -translate-y-1/2 
             w-11 h-11 rounded-full bg-[#141414] 
             border border-[#2A2A2A] 
@@ -155,7 +159,7 @@ export default function Testimonials() {
           </button>
 
           <button
-            onClick={() => sliderRef.current.slickNext()}
+            onClick={() => sliderRef.current?.slickNext()}
             className="hidden lg:flex absolute -right-6 top-1/2 -translate-y-1/2 
             w-11 h-11 rounded-full bg-[#141414] 
             border border-[#2A2A2A] 
@@ -167,7 +171,7 @@ export default function Testimonials() {
 
           <Slider ref={sliderRef} {...settings}>
             {testimonials.map((item, i) => (
-              <div key={i} className="px-0 sm:px-3 md:px-4">
+              <div key={i} className="px-3">
                 <motion.div
                   whileHover={{ y: -6 }}
                   transition={{ duration: 0.3 }}
@@ -211,14 +215,13 @@ export default function Testimonials() {
 
         {/* CTA */}
         <div className="text-center mt-12">
-          <Link to="/contact">
-            <button
-              className="px-8 py-3 rounded-full 
-              bg-[#D4AF37] text-black font-semibold 
-              hover:bg-[#F5C842] transition shadow-lg"
-            >
-              Request a Free Consultation
-            </button>
+          <Link
+            to="/contact"
+            className="inline-flex px-8 py-3 rounded-full 
+            bg-[#D4AF37] text-black font-semibold 
+            hover:bg-[#F5C842] transition shadow-lg"
+          >
+            Request a Free Consultation
           </Link>
         </div>
 

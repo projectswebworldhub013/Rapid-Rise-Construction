@@ -20,9 +20,10 @@ const SectionHeading = ({ icon: Icon, title }) => (
     <div className="h-[1px] w-20 md:w-32 bg-gradient-to-r from-transparent to-[#D4AF37]" />
     <div className="flex items-center gap-3 text-center">
       <Icon className="w-7 h-7 text-[#D4AF37]" />
-      <h2 className="text-3xl md:text-4xl font-semibold text-[#FFFFFF] tracking-wide">
+      <h2 className="text-2xl md:text-4xl font-semibold text-[#FFFFFF] tracking-wide">
         {title}
       </h2>
+      <Icon className="w-7 h-7 text-[#D4AF37]" />
     </div>
     <div className="h-[1px] w-20 md:w-32 bg-gradient-to-l from-transparent to-[#D4AF37]" />
   </div>
@@ -50,7 +51,7 @@ const ServiceDetail = () => {
           alt={service.title}
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-black/70" />
+        <div className="absolute inset-0 bg-black/50" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-16 h-full flex flex-col justify-end pb-20">
           <motion.p
@@ -80,7 +81,7 @@ const ServiceDetail = () => {
       </section>
 
       {/* ================= OVERVIEW ================= */}
-      <section className="max-w-6xl mx-auto px-6 md:px-12 py-20">
+      <section className="max-w-6xl  px-6 md:px-20 py-20">
         <h2 className="text-3xl font-semibold mb-6 text-[#FFFFFF]">
           Service Overview
         </h2>
@@ -97,7 +98,7 @@ const ServiceDetail = () => {
             title="What Makes This Service Exceptional"
           />
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-2 md:gap-4">
             {service.quickPoints.map((point, index) => (
               <motion.div
                 key={index}

@@ -1,35 +1,35 @@
 // src/assets/data/projectsData.js
 
 // Image imports
-import luxury1 from "../assets/images/projects/luxury1.jpg";
-import luxury2 from "../assets/images/projects/luxury2.jpg";
-import luxury3 from "../assets/images/projects/luxury3.jpg";
-import luxury4 from "../assets/images/projects/luxury4.jpg";
+import luxury1 from "../../assets/images/projects/luxury1.jpg";
+import luxury2 from "../../assets/images/projects/luxury2.jpg";
+import luxury3 from "../../assets/images/projects/luxury3.jpg";
+import luxury4 from "../../assets/images/projects/luxury4.jpg";
 
-import residential1 from "../assets/images/projects/residential1.jpg";
-import residential2 from "../assets/images/projects/residential2.jpg";
-import residential3 from "../assets/images/projects/residential3.jpg";
-import residential4 from "../assets/images/projects/residential4.jpg";
+import residential1 from "../../assets/images/projects/resedential1.avif";
+import residential2 from "../../assets/images/projects/resedential2.jpg";
+import residential3 from "../../assets/images/projects/resedential3.jpg";
+import residential4 from "../../assets/images/projects/resedential4.jpg";
 
-import commercial1 from "../assets/images/projects/commercial1.jpg";
-import commercial2 from "../assets/images/projects/commercial2.jpg";
-import commercial3 from "../assets/images/projects/commercial3.jpg";
-import commercial4 from "../assets/images/projects/commercial4.jpg";
+import commercial1 from "../../assets/images/projects/commercial1.jpg";
+import commercial2 from "../../assets/images/projects/commercial2.jpg";
+import commercial3 from "../../assets/images/projects/commercial3.jpg";
+import commercial4 from "../../assets/images/projects/commercial4.jpg";
 
-import office1 from "../assets/images/projects/office1.jpg";
-import office2 from "../assets/images/projects/office2.jpg";
-import office3 from "../assets/images/projects/office3.jpg";
-import office4 from "../assets/images/projects/office4.jpg";
+import office1 from "../../assets/images/projects/office1.avif";
+import office2 from "../../assets/images/projects/office2.jpg";
+import office3 from "../../assets/images/projects/office3.jpg";
+import office4 from "../../assets/images/projects/office4.jpg";
 
-import interior1 from "../assets/images/projects/interior1.jpg";
-import interior2 from "../assets/images/projects/interior2.jpg";
-import interior3 from "../assets/images/projects/interior3.jpg";
-import interior4 from "../assets/images/projects/interior4.jpg";
+import interior1 from "../../assets/images/projects/interior1.avif";
+import interior2 from "../../assets/images/projects/interior2.jpg";
+import interior3 from "../../assets/images/projects/interior3.jpg";
+import interior4 from "../../assets/images/projects/interior4.jpg";
 
-import renovation1 from "../assets/images/projects/renovation1.jpg";
-import renovation2 from "../assets/images/projects/renovation2.jpg";
-import renovation3 from "../assets/images/projects/renovation3.jpg";
-import renovation4 from "../assets/images/projects/renovation4.jpg";
+import renovation1 from "../../assets/images/projects/renovation1.jpg";
+import renovation2 from "../../assets/images/projects/renovation2.jpg";
+import renovation3 from "../../assets/images/projects/renovation3.jpg";
+import renovation4 from "../../assets/images/projects/renovation4.jpg";
 
 const projectsData = [
   {
