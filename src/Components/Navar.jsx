@@ -21,9 +21,10 @@ import {
   
   FaCouch,
   FaRedo,
+  FaReceipt,
 } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
-
+import {FaEnvelope, FaIdCard } from "react-icons/fa"
 import logo from "../assets/images/rr-logo.png";
 
 export default function Navbar() {
@@ -107,21 +108,117 @@ export default function Navbar() {
   return (
     <header className="fixed top-0 left-0 w-full z-50">
       {/* 🔶 Top Marquee */}
-      <div
-        className={`bg-[#0F0F0F] text-[#ffffff] text-sm overflow-hidden transition-all duration-500 ${
-          showTop ? "h-10 opacity-100" : "h-0 opacity-0"
-        }`}
-      >
-        <div className="flex items-center h-10 marquee-track whitespace-nowrap">
-          {[1, 2].map((i) => (
-            <p key={i} className="px-10">
-              UDYAM-UP-59-0063441 &nbsp; | &nbsp;
-              📧 Info@rapidriseconstruction.co.in &nbsp; | &nbsp;
-              📞 7060949888
-            </p>
-          ))}
-        </div>
-      </div>
+<div
+  className={`bg-[#0F0F0F] text-white text-xs overflow-hidden transition-all duration-500 ${
+    showTop ? "h-9 opacity-100" : "h-0 opacity-0"
+  }`}
+>
+  <div className="relative h-9 flex items-center overflow-hidden">
+
+    {/* Marquee Wrapper */}
+    <div className="flex w-max animate-marquee">
+
+  {/* ================= CONTENT SET 1 ================= */}
+  <div className="flex items-center gap-14 px-6 text-[#CFCFCF] whitespace-nowrap">
+
+    {/* Welcome */}
+    <div className="flex items-center gap-2 font-medium text-white">
+  <span className="text-[#D4AF37]">Welcome to</span>
+  <span>Rapid Rise Construction — Engineering Excellence in Every Project</span>
+</div>
+
+
+    {/* Divider */}
+    <span className="text-[#444]">|</span>
+
+    {/* UDYAM */}
+    <div className="flex items-center gap-2">
+      <FaIdCard className="text-[#D4AF37]" />
+      <span>UDYAM-UP-59-0063441</span>
+    </div>
+
+    <span className="text-[#444]">|</span>
+
+    {/* Emails */}
+    <div className="flex items-center gap-2">
+      <FaEnvelope className="text-[#D4AF37]" />
+      <span>rapidriseconstructions4@gmail.com</span>
+    </div>
+
+    <span className="text-[#444]">|</span>
+
+    <div className="flex items-center gap-2">
+      <FaEnvelope className="text-[#D4AF37]" />
+      <span>info@rapidriseconstruction.co.in</span>
+    </div>
+
+    <span className="text-[#444]">|</span>
+
+    {/* Phones */}
+    <div className="flex items-center gap-2">
+      <FaPhoneAlt className="text-[#D4AF37]" />
+      <span>+91 98971 01492</span>
+    </div>
+
+    <span className="text-[#444]">|</span>
+
+    <div className="flex items-center gap-2">
+      <FaPhoneAlt className="text-[#D4AF37]" />
+      <span>+91 98979 18698</span>
+    </div>
+  </div>
+
+  {/* ================= CONTENT SET 2 (DUPLICATE) ================= */}
+  <div className="flex items-center gap-14 px-6 text-[#CFCFCF] whitespace-nowrap">
+
+    <div className="flex items-center gap-2 font-medium text-white">
+      <span className="text-[#D4AF37]">Welcome to</span>
+      <span>Rapid Rise Construction</span>
+    </div>
+
+    <span className="text-[#444]">|</span>
+
+    <div className="flex items-center gap-2">
+      <FaIdCard className="text-[#D4AF37]" />
+      <span>UDYAM-UP-59-0063441</span>
+    </div>
+
+    <span className="text-[#444]">|</span>
+
+    <div className="flex items-center gap-2">
+      <FaEnvelope className="text-[#D4AF37]" />
+      <span>rapidriseconstructions4@gmail.com</span>
+    </div>
+
+    <span className="text-[#444]">|</span>
+
+    <div className="flex items-center gap-2">
+      <FaEnvelope className="text-[#D4AF37]" />
+      <span>info@rapidriseconstruction.co.in</span>
+    </div>
+
+    <span className="text-[#444]">|</span>
+
+    <div className="flex items-center gap-2">
+      <FaPhoneAlt className="text-[#D4AF37]" />
+      <span>+91 98971 01492</span>
+    </div>
+
+    <span className="text-[#444]">|</span>
+
+    <div className="flex items-center gap-2">
+      <FaPhoneAlt className="text-[#D4AF37]" />
+      <span>+91 98979 18698</span>
+    </div>
+  </div>
+
+</div>
+
+  </div>
+</div>
+
+
+
 
       {/* 🔶 Main Navbar */}
       <nav className="bg-[#FFFFFF] border-b border-[#E5E7EB] shadow-sm">
