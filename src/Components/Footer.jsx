@@ -245,7 +245,7 @@ export default function Footer() {
           © {new Date().getFullYear()} Rapid Rise Construction. All rights reserved.
         </p>
         <p>
-          Designed by{" "}
+          Designed and Developed by{" "}
           <a
             href="https://webworldhub.co.in"
             target="_blank"

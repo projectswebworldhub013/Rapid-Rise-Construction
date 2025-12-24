@@ -30,6 +30,8 @@ import logo from "../assets/images/rr-logo.png";
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showTop, setShowTop] = useState(true);
+  const [openServices, setOpenServices] = useState(false);
+  const [openProjects, setOpenProjects] = useState(false);
 
   /* ---------------- DATA ---------------- */
 
@@ -217,15 +219,12 @@ export default function Navbar() {
   </div>
 </div>
 
-
-
-
       {/* 🔶 Main Navbar */}
       <nav className="bg-[#FFFFFF] border-b border-[#E5E7EB] shadow-sm">
         <div className="max-w-[1400px] mx-auto flex items-center justify-between px-5 py-3">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
-            <img src={logo} alt="Rapid Rise Construction" className="h-14" />
+            <img src={logo} alt="Rapid Rise Construction" className="h-11 md:h-14" />
           </Link>
 
           {/* Desktop Menu */}
@@ -354,57 +353,265 @@ export default function Navbar() {
       </nav>
 
       {/* 🔶 Mobile Drawer */}
-      <div
-        className={`fixed top-0 left-0 h-full w-80 bg-[#0F0F0F] z-50 transform transition-transform duration-500 ${
-          menuOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
+<div
+  className={`fixed top-0 left-0 h-full w-80 bg-[#0F0F0F] z-50 transform transition-transform duration-500 ${
+    menuOpen ? "translate-x-0" : "-translate-x-full"
+  }`}
+>
+  {/* Header */}
+  <div className="flex items-center justify-between px-5 py-4 border-b border-[#2A2A2A]">
+    <h2 className="font-semibold text-white text-sm">
+      Rapid Rise Construction
+    </h2>
+    <FaTimes
+      className="text-white cursor-pointer"
+      onClick={() => setMenuOpen(false)}
+    />
+  </div>
+
+  {/* Scrollable Content */}
+  <div className="h-[calc(100%-64px)] overflow-y-auto px-5 py-4 text-[#CFCFCF] space-y-3">
+
+    {/* Main Links */}
+    {navLinks.map((link, i) => (
+      <Link
+        key={i}
+        to={link.path}
+        onClick={() => setMenuOpen(false)}
+        className="flex items-center gap-3 py-2 text-sm border-b border-[#1F1F1F]"
       >
-        <div className="flex items-center justify-between px-5 py-4 border-b border-[#2A2A2A]">
-          <h2 className="font-bold text-white">Rapid Rise Construction</h2>
-          <FaTimes className="text-white" onClick={() => setMenuOpen(false)} />
-        </div>
+        {link.icon}
+        {link.name}
+      </Link>
+    ))}
 
-        <div className="px-5 py-4 space-y-4 text-[#CFCFCF]">
-          {navLinks.map((link, i) => (
-            <Link
-              key={i}
-              to={link.path}
-              onClick={() => setMenuOpen(false)}
-              className="block py-2 hover:text-[#F5C842]"
-            >
-              {link.name}
-            </Link>
-          ))}
+    {/* Services Dropdown */}
+    <details className="group">
+      <summary className="flex items-center justify-between py-3 cursor-pointer border-b border-[#1F1F1F]">
+        <span className="flex items-center gap-3 text-sm">
+          <FaTools /> Services
+        </span>
+        <FaChevronDown className="group-open:rotate-180 transition-transform text-xs" />
+      </summary>
 
-          <div className="mt-4">
-            <p className="text-[#D4AF37] mb-2 font-semibold">Services</p>
-            {services.map((service, i) => (
-              <Link
-                key={i}
-                to={service.path}
-                onClick={() => setMenuOpen(false)}
-                className="block py-2 text-sm hover:text-[#F5C842]"
-              >
-                {service.name}
-              </Link>
-            ))}
-          </div>
-
-          <div className="mt-4">
-            <p className="text-[#D4AF37] mb-2 font-semibold">Projects</p>
-            {projects.map((item, i) => (
-              <Link
-                key={i}
-                to={item.path}
-                onClick={() => setMenuOpen(false)}
-                className="block py-2 text-sm flex items-center gap-2 hover:text-[#F5C842]"
-              >
-                {item.icon} {item.name}
-              </Link>
-            ))}
-          </div>
-        </div>
+      <div className="pl-6 pt-2 space-y-2">
+        {services.map((service, i) => (
+          <Link
+            key={i}
+            to={service.path}
+            onClick={() => setMenuOpen(false)}
+            className="block text-sm py-1 hover:text-[#F5C842]"
+          >
+            {service.name}
+          </Link>
+        ))}
       </div>
+    </details>
+
+    {/* Projects Dropdown */}
+    <details className="group">
+      <summary className="flex items-center justify-between py-3 cursor-pointer border-b border-[#1F1F1F]">
+        {/* 🔶 Mobile Drawer */}
+<div
+  className={`fixed top-0 left-0 h-full w-80 bg-[#0F0F0F] z-50 transform transition-transform duration-500 ease-in-out ${
+    menuOpen ? "translate-x-0" : "-translate-x-full"
+  }`}
+>
+  {/* Header */}
+  <div className="flex items-center justify-between px-5 py-4 border-b border-[#2A2A2A]">
+    <h2 className="font-semibold text-white text-sm tracking-wide">
+      Rapid Rise Construction
+    </h2>
+    <FaTimes
+      className="text-white cursor-pointer"
+      onClick={() => setMenuOpen(false)}
+    />
+  </div>
+
+  {/* Scrollable Content */}
+  <div className="h-[calc(100%-64px)] overflow-y-auto px-5 py-4 text-[#CFCFCF]">
+
+    {/* Primary Links */}
+    <div className="space-y-2">
+      {navLinks.map((link, i) => (
+        <Link
+          key={i}
+          to={link.path}
+          onClick={() => setMenuOpen(false)}
+          className="flex items-center gap-3 py-2 text-sm border-b border-[#1F1F1F]"
+        >
+          {link.icon}
+          {link.name}
+        </Link>
+      ))}
+    </div>
+
+    {/* Services Dropdown */}
+<div className="mt-3">
+  <button
+    onClick={() => setOpenServices(!openServices)}
+    className="w-full flex items-center justify-between py-3 border-b border-[#1F1F1F]"
+  >
+    <span className="flex items-center gap-3 text-sm text-[#CFCFCF]">
+      <FaTools /> Services
+    </span>
+    <FaChevronDown
+      className={`text-xs transition-transform duration-300 ${
+        openServices ? "rotate-180" : ""
+      }`}
+    />
+  </button>
+
+  <div
+    className={`overflow-hidden transition-all duration-500 ease-in-out ${
+      openServices ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"
+    }`}
+  >
+    <div className="pl-6 pt-3 space-y-2">
+      {services.map((service, i) => (
+        <Link
+          key={i}
+          to={service.path}
+          onClick={() => setMenuOpen(false)}
+          className="block text-sm py-1 hover:text-[#F5C842]"
+        >
+          {service.name}
+        </Link>
+      ))}
+    </div>
+  </div>
+</div>
+
+
+    {/* Projects Dropdown */}
+<div className="mt-3">
+  <button
+    onClick={() => setOpenProjects(!openProjects)}
+    className="w-full flex items-center justify-between py-3 border-b border-[#1F1F1F]"
+  >
+    <span className="flex items-center gap-3 text-sm text-[#CFCFCF]">
+      <FaProjectDiagram /> Our Projects
+    </span>
+    <FaChevronDown
+      className={`text-xs transition-transform duration-300 ${
+        openProjects ? "rotate-180" : ""
+      }`}
+    />
+  </button>
+
+  <div
+    className={`overflow-hidden transition-all duration-500 ease-in-out ${
+      openProjects ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"
+    }`}
+  >
+    <div className="pl-6 pt-3 space-y-2">
+      {projects.map((item, i) => (
+        <Link
+          key={i}
+          to={item.path}
+          onClick={() => setMenuOpen(false)}
+          className="flex items-center gap-2 text-sm py-1 hover:text-[#F5C842]"
+        >
+          {item.icon}
+          {item.name}
+        </Link>
+      ))}
+    </div>
+  </div>
+</div>
+
+
+    {/* Divider */}
+    <div className="my-5 border-t border-[#1F1F1F]" />
+
+    {/* Company Details */}
+    <div className="space-y-2 text-xs">
+      <div className="flex items-center gap-2">
+        <FaIdCard className="text-[#D4AF37]" />
+        <span>UDYAM-UP-59-0063441</span>
+      </div>
+      <div className="flex items-center gap-2">
+        <FaReceipt className="text-[#D4AF37]" />
+        <span>GSTIN: 09BLBPK4321F1ZG</span>
+      </div>
+    </div>
+
+    {/* Divider */}
+    <div className="my-5 border-t border-[#1F1F1F]" />
+
+    {/* Contact Info */}
+    <div className="space-y-2 text-xs">
+      <div className="flex items-center gap-2">
+        <FaPhoneAlt className="text-[#D4AF37]" />
+        <span>+91 98971 01492</span>
+      </div>
+      <div className="flex items-center gap-2">
+        <FaEnvelope className="text-[#D4AF37]" />
+        <span>info@rapidriseconstruction.co.in</span>
+      </div>
+    </div>
+
+    {/* Divider */}
+    <div className="my-5 border-t border-[#1F1F1F]" />
+
+    {/* Social Icons */}
+    <div className="flex items-center justify-between text-lg px-2">
+      <a href="https://www.facebook.com/Rapidriseconstruction/" target="_blank" rel="noreferrer" className="text-[#1877F2]">
+        <FaFacebookF />
+      </a>
+      <a href="https://www.instagram.com/rapidriseconstructions/" target="_blank" rel="noreferrer" className="text-[#E1306C]">
+        <FaInstagram />
+      </a>
+      <a href="https://x.com/Rapidriseconst" target="_blank" rel="noreferrer">
+        <FaXTwitter />
+      </a>
+      <a href="https://www.linkedin.com/in/rapidriseconstruction/" target="_blank" rel="noreferrer" className="text-[#0A66C2]">
+        <FaLinkedinIn />
+      </a>
+      <a href="https://www.pinterest.com/rapidriseconstruction/" target="_blank" rel="noreferrer" className="text-[#E60023]">
+        <FaPinterestP />
+      </a>
+      <a href="https://www.youtube.com/@rapidriseconstructions" target="_blank" rel="noreferrer" className="text-[#FF0000]">
+        <FaYoutube />
+      </a>
+    </div>
+
+  </div>
+</div>
+
+        <FaChevronDown className="group-open:rotate-180 transition-transform text-xs" />
+      </summary>
+
+      <div className="pl-6 pt-2 space-y-2">
+        {projects.map((item, i) => (
+          <Link
+            key={i}
+            to={item.path}
+            onClick={() => setMenuOpen(false)}
+            className="flex items-center gap-2 text-sm py-1 hover:text-[#F5C842]"
+          >
+            {item.icon}
+            {item.name}
+          </Link>
+        ))}
+      </div>
+    </details>
+
+    {/* Contact Info (Optional but professional) */}
+    <div className="pt-4 border-t border-[#1F1F1F] text-xs space-y-2">
+      <div className="flex items-center gap-2">
+        <FaPhoneAlt className="text-[#D4AF37]" />
+        <span>+91 98971 01492</span>
+      </div>
+      <div className="flex items-center gap-2">
+        <FaEnvelope className="text-[#D4AF37]" />
+        <span>info@rapidriseconstruction.co.in</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 
       {/* Marquee Animation */}
       <style>{`

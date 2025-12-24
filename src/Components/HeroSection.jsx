@@ -13,16 +13,19 @@ import hero1 from "../assets/images/hero/h1.jpg";
 import hero2 from "../assets/images/hero/h3.jpg";
 import hero3 from "../assets/images/hero/h4.avif";
 
+/* ---------------- BACKGROUND SLIDES ---------------- */
+
 const slides = [hero1, hero2, hero3];
 
-/* 🔹 Right Panel Points */
+/* ---------------- RIGHT PANEL QUOTES ---------------- */
+
 const featurePoints = [
   {
     icon: <FaHardHat />,
     text: (
       <>
         Over <strong>20+ years of industry experience</strong> delivering
-        structurally strong, aesthetically refined, future-ready constructions.
+        structurally strong, future-ready constructions.
       </>
     ),
   },
@@ -31,7 +34,7 @@ const featurePoints = [
     text: (
       <>
         Expertise in <strong>luxury homes, commercial buildings, hospitals,
-        offices & institutions</strong> with end-to-end supervision.
+        offices & institutions</strong>.
       </>
     ),
   },
@@ -48,8 +51,8 @@ const featurePoints = [
     icon: <FaTools />,
     text: (
       <>
-        Skilled engineers, architects & supervisors ensuring
-        <strong> flawless execution</strong> at every stage.
+        Skilled engineers and supervisors ensuring
+        <strong> flawless execution</strong>.
       </>
     ),
   },
@@ -58,64 +61,60 @@ const featurePoints = [
     text: (
       <>
         Commitment to <strong>on-time delivery</strong>, safety compliance and
-        long-term structural reliability.
+        long-term reliability.
       </>
     ),
   },
 ];
 
 export default function HeroSection() {
-  const [index, setIndex] = useState(0);
+  const [bgIndex, setBgIndex] = useState(0);
   const [featureIndex, setFeatureIndex] = useState(0);
 
-  /* 🔁 Background Slider */
+  /* 🔁 Background Image Slider */
   useEffect(() => {
     const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % slides.length);
+      setBgIndex((prev) => (prev + 1) % slides.length);
     }, 5000);
     return () => clearInterval(interval);
   }, []);
 
-  /* 🔁 Right Text Vertical Slider */
+  /* 🔁 Right Quote Slider */
   useEffect(() => {
     const interval = setInterval(() => {
       setFeatureIndex((prev) => (prev + 1) % featurePoints.length);
-    }, 3500);
+    }, 3600);
     return () => clearInterval(interval);
   }, []);
 
-  const visiblePoints = [
-    featurePoints[featureIndex % featurePoints.length],
-    featurePoints[(featureIndex + 1) % featurePoints.length],
-    featurePoints[(featureIndex + 2) % featurePoints.length],
-  ];
+  const activePoint = featurePoints[featureIndex];
 
   return (
     <section className="mt-28 relative w-full h-[85vh] overflow-hidden">
-      {/* 🔥 Background Slider */}
+      {/* BACKGROUND SLIDER */}
       <AnimatePresence mode="wait">
         <motion.div
-          key={index}
+          key={bgIndex}
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${slides[index]})` }}
-          initial={{ opacity: 0, scale: 1.1 }}
+          style={{ backgroundImage: `url(${slides[bgIndex]})` }}
+          initial={{ opacity: 0, scale: 1.08 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 2, ease: "easeInOut" }}
         />
       </AnimatePresence>
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/45 to-black/50" />
+      {/* OVERLAY */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/50 to-black/60" />
 
       {/* CONTENT */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 min-h-[90vh] flex items-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 h-full flex items-center">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center w-full">
 
-          {/* LEFT */}
+          {/* LEFT CONTENT */}
           <motion.div
-            initial={{ opacity: 0, x: -60 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ x: -60, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 1.2 }}
             className="text-white"
           >
@@ -131,63 +130,26 @@ export default function HeroSection() {
               precision, and long-term reliability.
             </p>
 
-            {/* CTA */}
             <div className="mt-10 flex flex-wrap gap-4">
               <a
                 href="/contact"
-                className="inline-flex items-center gap-3 px-8 py-4 bg-[#D4AF37] text-black font-semibold rounded-full hover:bg-[#F5C842] transition-all duration-300"
+                className="inline-flex items-center gap-3 px-8 py-4 bg-[#D4AF37] text-black font-semibold rounded-full hover:bg-[#F5C842] transition"
               >
                 Get Free Consultation <FaArrowRight />
               </a>
 
               <a
-                href="/projects"
+                href="/about"
                 className="inline-flex items-center gap-3 px-8 py-4 border border-white/40 rounded-full hover:bg-white/10 transition"
               >
-                View Our Projects
+                Learn More
               </a>
             </div>
           </motion.div>
 
-          {/* RIGHT – FIXED PANEL WITH SLIDING CONTENT */}
-          <motion.div
-            initial={{ opacity: 0, x: 60 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1.2 }}
-            className="relative left-32"
-          >
-            <div className="p-8 w-[28rem] overflow-hidden">
-              <AnimatePresence mode="popLayout">
-                <motion.div
-                  key={featureIndex}
-                  initial={{ y: 40, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  exit={{ y: -40, opacity: 0 }}
-                  transition={{ duration: 0.9, ease: "easeInOut" }}
-                  className="space-y-6"
-                >
-                  {visiblePoints.map((item, i) => (
-                    <div key={i} className="flex items-start gap-4">
-                      <div className="text-[#D4AF37] text-2xl mt-1">
-                        {item.icon}
-                      </div>
-                      <p className="text-sm text-[#E5E5E5] leading-relaxed">
-                        {item.text}
-                      </p>
-                    </div>
-                  ))}
-                </motion.div>
-              </AnimatePresence>
+        {/* RIGHT PANEL – TOP RIGHT (DESKTOP ONLY) */}
 
-              <div className="pt-6 mt-6 border-t border-white/10 text-sm text-[#CFCFCF]">
-                Trusted by{" "}
-                <span className="text-[#D4AF37] font-semibold">500+</span>{" "}
-                satisfied clients across Uttar Pradesh.
-              </div>
-            </div>
-          </motion.div>
-
-        </div>
+       </div>
       </div>
     </section>
   );

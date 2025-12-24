@@ -10,6 +10,7 @@ import FloatingButtons from './Components/FloatingButtons'
 import ScrollToTop from './Components/ScrollToTop'
 import Contact from './Pages/Contact'
 import Gallery from './Pages/Gallery'
+import Certificates from './Pages/Certificates'
 const App = () => {
   return (
     <div>
@@ -22,6 +23,7 @@ const App = () => {
         <Route path='/gallery' element={<Gallery/>}/>
         <Route path="/services/:id" element={<ServiceDetail />} />
         <Route path="/projects/:projectSlug" element={<ProjectDetail />} />
+        <Route path='/certificates' element={<Certificates/>}/>
       </Routes>
       <Footer/>
       <FloatingButtons/>
