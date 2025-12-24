@@ -38,7 +38,6 @@ const certificates = [
     description:
       "This certificate establishes Rapid Rise Construction as a government-recognized MSME, ensuring operational authenticity, credibility, and regulatory compliance.",
     file: udyam,
-    tag: "MSME Verified",
   },
   {
     id: 2,
@@ -46,7 +45,6 @@ const certificates = [
     description:
       "The annexure provides detailed official business information, reinforcing transparency, legitimacy, and trust for clients and partners.",
     file: udyamAnnexure,
-    tag: "Business Identity",
   },
   {
     id: 3,
@@ -54,7 +52,6 @@ const certificates = [
     description:
       "Our GST registration guarantees lawful billing practices, tax compliance, and eligibility to execute commercial and turnkey construction projects.",
     file: gst,
-    tag: "GST Approved",
   },
 ];
 
@@ -133,7 +130,7 @@ const Certificates = () => {
           transition={{ duration: 1 }}
           className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
         >
-          {certificates.map(({ id, name, description, file, tag }) => (
+          {certificates.map(({ id, name, description, file }) => (
             <motion.div
               key={id}
               whileHover={{ scale: 1.03 }}
@@ -150,15 +147,7 @@ const Certificates = () => {
               />
 
               {/* Tag */}
-              <div
-                className="absolute top-5 right-5 text-xs font-semibold px-4 py-1 rounded-full"
-                style={{
-                  backgroundColor: COLORS.primaryAccent,
-                  color: COLORS.primaryBg,
-                }}
-              >
-                {tag}
-              </div>
+              
 
               {/* Icon + Title */}
               <div className="flex items-center gap-4 mb-5">
